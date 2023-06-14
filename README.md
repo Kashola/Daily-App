@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @Kashola
 - 👀 I’m interested in ... learning all I can.
-- 🌱 I’m currently learning ... HTML/CSS & Javascript.
+- 🌱 I’m currently learning ... Javascript.
 - 📫 How to reach me ... dkashola@gmail.com
 
 <!---
