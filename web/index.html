@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daily Goals</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🗓️ Daily Goals</h1>
+  <input type="date" id="datePicker">
+  <input type="text" id="goalInput" placeholder="Enter your goal">
+  <button onclick="addGoal()">Add Goal</button>
+
+  <ul id="goalList"></ul>
+
+  <script type="text/javascript">
+    async function addGoal() {
+      const date = document.getElementById('datePicker').value;
+      const goal = document.getElementById('goalInput').value;
+      if (!date || !goal) return;
+      const updatedGoals = await eel.add_goal(date, goal)();
+      renderGoals(updatedGoals);
+      document.getElementById('goalInput').value = '';
+    }
+
+    async function renderGoals(goals) {
+      const list = document.getElementById('goalList');
+      list.innerHTML = '';
+      goals.forEach(g => {
+        const li = document.createElement('li');
+        li.textContent = g;
+        list.appendChild(li);
+      });
+    }
+
+    document.getElementById('datePicker').addEventListener('change', async () => {
+      const date = document.getElementById('datePicker').value;
+      const goals = await eel.get_goals(date)();
+      renderGoals(goals);
+    });
+  </script>
+</body>
+</html>
